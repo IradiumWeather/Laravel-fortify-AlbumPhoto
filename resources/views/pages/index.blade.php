@@ -21,7 +21,7 @@
                 @foreach ( $images as $image )
                     <div class="w-full col-span-2">
                     <img
-                        src="{{ $image->path }}"
+                        src="{{ Storage::url($image->path) }}"
                         alt="{{ $image->name }}"
                         class="inset-0 h-full w-full object-cover object-center rounded opacity-75 hover:opacity-100 ">
                     </div>

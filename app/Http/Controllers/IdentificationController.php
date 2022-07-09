@@ -31,11 +31,16 @@ class IdentificationController extends Controller
     }
 
     public function imgUploads(Request $request){
+        $request->validate([
+            'libphoto' => 'required|min:3',
+            'photo' => 'required'
+        ]);
+
         $User = Auth::user();
         if($request->file('photo')->extension()=='jpg'){;
         $image = new Image();
         $image->name=$request->libphoto;
-        $image->path= $request->file('photo')->storeAs($User->name,$request->libphoto.'jpg','public') ;
+        $image->path= $request->file('photo')->storeAs($User->name,$request->libphoto.'.jpg','public') ;
         $image->user_id= Auth::user()->id;
         $image->save();
         return redirect('')->with('message', 'Image ajouté avec succès');
