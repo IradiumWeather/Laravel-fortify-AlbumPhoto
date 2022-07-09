@@ -24,7 +24,7 @@ Route::get('/home', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/add',[IdentificationController::class,'addImg'])->name('addImg');
-    Route::post('/add',[IdentificationController::class,'uploads'])->name('imgUploads');
+    Route::post('/add',[IdentificationController::class,'imgUploads'])->name('imgUploads');
 });
 
 Route::get('/',[IdentificationController::class,'gallery'])->name('gallery');
